@@ -62,7 +62,7 @@ def process_one_sentence(sent, pos, window_size, vocab_to_id):
     features = defaultdict(set)
     
     for idx,token in enumerate(sent):
-        if token.tag_[:2] == pos and len(token.string.strip()) > 2:
+        if len(token.string.strip()) > 2:
             for idw in range(idx-window_size, idx+window_size):
                 if idw != idx and idw >= 0 and idw < len(sent):
                     features[vocab_to_id[sent[idx]]].add(vocab_to_id[sent[idw]])
