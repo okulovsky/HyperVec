@@ -24,7 +24,6 @@ def main():
     window_size = 5
     dfeatures = defaultdict(set)
         
-    output_dir = '/mount/arbeitsdaten34/projekte/slu/KimAnh/Corpora/'
     
     vocab_to_id = defaultdict(count(0).next)
     
@@ -50,7 +49,7 @@ def main():
 
 def save_file(dfeatures, id_to_vocab, outfile):
     with gzip.open(outfile, 'w') as fout:
-        for kk,vv in dfeatures:
+        for kk,vv in dfeatures.iteritems():
             contexts = [id_to_vocab[idx] for idx in list(vv)]
             fout.write(str(id_to_vocab[kk]))
             for word in contexts:
